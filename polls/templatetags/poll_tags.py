@@ -14,7 +14,6 @@ def get_poll():
 
   return poll
   
-#@register.inclusion_tag('polls/poll.haml', takes_context=True)
 @register.simple_tag(takes_context=True)
 def render_poll(context):
   try:
@@ -37,8 +36,9 @@ def render_poll_ajax(context):
   except:
     return ""
 
-  js =  "$('#poll').load('/polls/latest/', function(response, status, xhr) {\n" + \
-        "\tform = $('#poll form')[0];\n" + \
+  js =  "document.write('<div id=\"poll-content\"></div>');\n" + \
+        "$('#poll-content').load('" + reverse('PollLatest') + "', function(response, status, xhr) {\n" + \
+        "\tform = $('#poll-content form')[0];\n" + \
         "\tif(form) {\n" + \
         "\t\tform = $(form);\n" + \
         "\t\tform.submit(function(event) {\n" + \
