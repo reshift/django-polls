@@ -14,6 +14,7 @@ setup(
     packages=(
       'polls',
       'polls.migrations',
+      'polls.templatetags',
     ),
     package_data={
       'polls': [
