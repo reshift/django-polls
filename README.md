@@ -7,7 +7,7 @@ Installation
 ------------
 
 - Run "pip install https://github.com/hub-nl/django-polls/zipball/master"
-- Add polls urls to your url file: "(r'^polls/', include('polls.urls'))"
+- Add polls urls to your urls: "(r'^polls/', include('polls.urls'))"
 - Add '{% load poll_tags %}' to your templates where needed
 
 Usage
