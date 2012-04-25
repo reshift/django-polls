@@ -3,14 +3,14 @@ Polls app
 
 Available tags
 --------------
+Render the latest poll
     
     {% render_poll %}
     
-Renders the latest poll
+Render needed javascript for a AJAX version of the latest poll
 
     {% render_poll_ajax %}
 
-Output needed javascript for the latest poll
 example:
 
     <script>
