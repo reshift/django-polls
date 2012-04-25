@@ -1,0 +1,17 @@
+%dl.results
+  %dt {{poll.title}}
+  %dd.description {{poll.intro}}
+
+  %dd
+    - for option in poll.choice_set.all
+        %p
+          {{option}} 
+          %span.votes
+            - if option.count > 1 
+              ({{option.count}} stemmen)
+            - else
+              ({{option.count}} stem)
+          %span.percentage
+            ({{option.percentage}}%)
+          .progress
+            .bar.percentage{'style':'width:{{option.percentage}}%'}

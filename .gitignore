@@ -1,0 +1,6 @@
+*.pyc
+src
+*.log
+*.pot
+venv
+venv/*
