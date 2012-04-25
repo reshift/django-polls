@@ -5,7 +5,7 @@ long_description = open('README.md').read()
  
 setup(
     name='django-polls',
-    version='0.1',
+    version='0.1.1',
     description='Polls for django',
     long_description=long_description,
     author='HUB Online',
