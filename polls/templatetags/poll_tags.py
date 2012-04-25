@@ -1,18 +1,45 @@
-from django.template import Library
+from django import template
 from polls.models import Poll
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 from django.core.urlresolvers import reverse
 
-register = Library()
+register = template.Library()
 
-@register.simple_tag()
-def get_poll():
-  try:
-    poll = Poll.publishable.latest()
-  except:
-    poll = None
+class GetPoll(template.Node):
+  def handle_token(cls, parser, token):
+    args = token.contents.split()
 
-  return poll
+    # {% get_poll %}        
+    if len(args) == 1:
+      return cls()
+
+    # {% get_poll as [var] %}        
+    if len(args) == 3 and args[1] == 'as':
+      return cls(object_expr = parser.compile_filter(args[2]))
+    
+  handle_token = classmethod(handle_token)
+
+  def __init__(self, as_varname=None):
+    self.as_varname = as_varname
+
+  def render(self, context):
+    try:
+      poll = Poll.publishable.latest()
+    except:
+      poll = None
+    
+    if self.as_varname: # if user gives us a variable to return
+      context[self.as_varname] = poll
+      return ''
+    else:
+      return poll
+
+@register.tag()
+def get_poll(parser, token):
+    '''
+    Returns a poll object
+    '''
+    return GetPoll.handle_token(parser, token)
   
 @register.simple_tag(takes_context=True)
 def render_poll(context):

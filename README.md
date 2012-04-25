@@ -3,6 +3,12 @@ Polls app
 
 Available tags
 --------------
+
+Get the latest poll (object).
+    
+    {% get_poll %}
+    {% get_poll as [var] %}
+
 Render the latest poll
     
     {% render_poll %}
