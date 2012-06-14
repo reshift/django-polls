@@ -6,12 +6,11 @@
     - for option in poll.choice_set.all
         %p
           {{option}}
-          / Uncomment the next 5 lines to add vote count 
-          / %span.votes
-          /   - if option.count > 1 
-          /     ({{option.count}} stemmen)
-          /   - else
-          /     ({{option.count}} stem)
+          %span.votes
+            - if option.count > 1 
+              ({{option.count}} stemmen)
+            - else
+              ({{option.count}} stem)
           %span.percentage
             ({{option.percentage}}%)
           .progress
