@@ -74,7 +74,7 @@ def render_poll_ajax(context):
         "\t\t\t/* Send the data using post and put the results in a div */\n" + \
         "\t\t\t$.post( form.attr('action'), form.serialize(),\n" + \
         "\t\t\tfunction( data ) {\n" + \
-        "\t\t\t\t$('#poll').empty().append(data);\n" + \
+        "\t\t\t\t$('#poll-content').empty().append(data);\n" + \
         "\t\t\t}\n" + \
         "\t\t\t);\n" + \
         "\t\t});\n" + \
