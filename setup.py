@@ -5,12 +5,12 @@ long_description = open('README.md').read()
  
 setup(
     name='django-polls',
-    version='0.1.4',
+    version='0.1.5',
     description='Polls for django',
     long_description=long_description,
-    author='HUB Online',
-    author_email='online@hub.nl',
-    url='https://github.com/hub-nl/django-polls',
+    author='Reshift Digital',
+    author_email='ot@reshift.nl',
+    url='https://github.com/reshift/django-polls',
     packages=(
       'polls',
       'polls.migrations',
