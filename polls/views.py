@@ -27,7 +27,7 @@ def form(request, id):
   if poll.can_vote(ip) == False:
     return redirect(poll.get_absolute_url())
     
-  return render_to_response('polls/form.haml', locals(), context_instance=RequestContext(request))
+  return render_to_response('polls/form.html', locals(), context_instance=RequestContext(request))
 
 @never_cache
 def vote(request, id):
@@ -44,4 +44,4 @@ def vote(request, id):
 @never_cache
 def results(request, id):
   poll = get_object_or_404(Poll, pk=id)
-  return render_to_response('polls/results.haml', locals(), context_instance=RequestContext(request))
+  return render_to_response('polls/results.html', locals(), context_instance=RequestContext(request))
