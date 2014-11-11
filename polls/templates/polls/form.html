@@ -1,15 +1,22 @@
-%h2 {{poll.title}}
-%p {{poll.intro}}
+<h2> {{poll.title}} </h2>
+<p> {{poll.intro}} </p>
 
-%form{'action':'/polls/vote/{{poll.id}}/','method':'post'}
-  %fieldset
-    - csrf_token
-    - for option in poll.choice_set.all
-      .control-group
-        .controls
-          %label.radio
-            %input.control-label{'type':'radio', 'name':'choice', 'value':'{{option.id}}'}
+<form action='/polls/vote/{{poll.id}}/' method="post">
+  <fieldset>
+    {% csrf_token %}
+    {% for option in poll.choice_set.all %}
+      <div class="control-group">
+        <div class="controls">
+          <label class="radio">
+            <input class="control-label" type="radio" name="choice" value="{{option.id}}">
             {{option}}
+		  </label>
+	   </div>
+	  </div>
+	{% endfor %}
 
-    %button.btn
+    <button class="btn">
       Stem!
+	 </button>
+  </fieldset>
+</form>
