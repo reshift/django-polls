@@ -1,17 +1,22 @@
-%dl.results
-  %dt {{poll.title}}
-  %dd.description {{poll.intro}}
+<h2> {{poll.title}} </h2>
+<p> {{poll.intro}} </p>
 
-  %dd
-    - for option in poll.choice_set.all
-        %p
+  <div>
+    {% for option in poll.choice_set.all %}
+        <p>
           {{option}}
-          %span.votes
+          <span class='votes'>
             - if option.count > 1 
               ({{option.count}} stemmen)
             - else
               ({{option.count}} stem)
-          %span.percentage
+		  </span>
+		  <span class='percentage'>
             ({{option.percentage}}%)
-          .progress
-            .bar.percentage{'style':'width:{{option.percentage}}%'}
+          <div class='progress'>
+            <div class='bar' id='percentage' style='width: {{option.percentage}}%;'></div>
+		  </div>
+		  </span>	
+		</p>
+	{% endfor %}
+  </div>
